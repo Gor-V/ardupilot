@@ -279,6 +279,8 @@ AP_HW_SDMODELH7V2                    1167
 
 AP_HW_JHEMCUF405WING                 1169
 AP_HW_MatekG474                      1170
+AP_HW_PhenixH7_lite                  1171
+AP_HW_PhenixH7_Pro                   1172
 
 AP_HW_FlywooF405HD_AIOv2             1180
 
@@ -344,6 +346,10 @@ AP_HW_Holybro-PERIPH-H7              5404
 
 #IDs 5501-5599 reserved for MATEKSYS
 AP_HW_MATEKH743SE                    5501
+
+
+#IDs 5600-5699 reserved for ZeroOne
+AP_HW_ZeroOne_X6                     5600
 
 # IDs 6000-6099 reserved for SpektreWorks
 

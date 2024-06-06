@@ -69,14 +69,21 @@ function print(text) end
 -- data flash logging to SD card
 logger = {}
 
--- write value to data flash log with given types and names, optional units and multipliers, timestamp will be automatically added
+-- write value to data flash log with given types and names with units and multipliers, timestamp will be automatically added
 ---@param name string -- up to 4 characters
 ---@param labels string -- comma separated value labels, up to 58 characters
 ---@param format string -- type format string, see https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_Logger/README.md
----@param units? string -- optional units string
----@param multipliers? string -- optional multipliers string
----@param data1 integer|number|uint32_t_ud|string -- data to be logged, type to match format string
-function logger:write(name, labels, format, units, multipliers, data1, ...) end
+---@param units string -- units string
+---@param multipliers string -- multipliers string
+---@param ... integer|number|uint32_t_ud|string -- data to be logged, type to match format string
+function logger:write(name, labels, format, units, multipliers, ...) end
+
+-- write value to data flash log with given types and names, timestamp will be automatically added
+---@param name string -- up to 4 characters
+---@param labels string -- comma separated value labels, up to 58 characters
+---@param format string -- type format string, see https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_Logger/README.md
+---@param ... integer|number|uint32_t_ud|string -- data to be logged, type to match format string
+function logger:write(name, labels, format, ...) end
 
 -- log a files content to onboard log
 ---@param filename string -- file name
@@ -2818,6 +2825,13 @@ gps.GPS_OK_FIX_3D = enum_integer
 gps.GPS_OK_FIX_2D = enum_integer
 gps.NO_FIX = enum_integer
 gps.NO_GPS = enum_integer
+
+-- get yaw from GPS in degrees
+---@param instance integer -- instance number
+---@return number|nil -- yaw in degrees
+---@return number|nil -- yaw accuracy in degrees
+---@return uint32_t_ud|nil -- time in milliseconds of last yaw reading
+function gps:gps_yaw_deg(instance) end
 
 --  Returns nil or the instance number of the first GPS that has not been fully configured. If all GPS’s have been configured this returns nil.
 ---@return integer|nil
